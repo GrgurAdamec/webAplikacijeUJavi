@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Vehicle } from '../../interface/vehicle';
 import { VehicleServiceService } from '../../service/vehicle-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -12,18 +13,20 @@ export class VehicleListComponent {
   currentVehicleRegistration: string = '';
   currentVehicle: Vehicle | null = null;
 
-  constructor(private vehicleService: VehicleServiceService) {}
+  constructor(
+    private vehicleService: VehicleServiceService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.vehicleService.getVehicleList().subscribe((vehicles: Vehicle[]) => {
       this.vehicles = vehicles;
     });
-
-    console.log(this.vehicles);
   }
 
   setCurrentVehicle(vehicle: Vehicle) {
     this.currentVehicleRegistration = vehicle.registration;
     this.currentVehicle = vehicle;
+    this.router.navigate(['/vehicles', vehicle.registration]);
   }
 }

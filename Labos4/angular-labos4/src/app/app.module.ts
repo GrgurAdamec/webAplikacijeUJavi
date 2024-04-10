@@ -8,11 +8,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
+import { Route, RouterModule, provideRouter } from '@angular/router';
+import { HomePageComponent } from './components/home-page/home-page.component';
+
+const routes: Route[] = [
+  { path: '', component: HomePageComponent },
+  { path: 'vehicles/:id', component: VehicleDetailsComponent },
+  { path: 'vehicles', component: VehicleListComponent },
+];
 
 @NgModule({
-  declarations: [AppComponent, VehicleListComponent, VehicleDetailsComponent],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [provideClientHydration()],
+  declarations: [
+    AppComponent,
+    VehicleListComponent,
+    VehicleDetailsComponent,
+    HomePageComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, RouterModule],
+  providers: [provideClientHydration(), provideRouter(routes)],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

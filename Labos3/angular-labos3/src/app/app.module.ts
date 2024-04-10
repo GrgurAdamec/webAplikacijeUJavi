@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
+import { Route } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent, VehicleListComponent, VehicleDetailsComponent],
