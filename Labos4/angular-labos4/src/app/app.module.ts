@@ -10,6 +10,8 @@ import { VehicleListComponent } from './components/vehicle-list/vehicle-list.com
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
 import { Route, RouterModule, provideRouter } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { NewVehicleFormComponent } from './components/new-vehicle-form/new-vehicle-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Route[] = [
   { path: '', component: HomePageComponent },
@@ -23,8 +25,9 @@ const routes: Route[] = [
     VehicleListComponent,
     VehicleDetailsComponent,
     HomePageComponent,
+    NewVehicleFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule],
+  imports: [BrowserModule, AppRoutingModule, RouterModule, FormsModule],
   providers: [provideClientHydration(), provideRouter(routes)],
   bootstrap: [AppComponent],
 })

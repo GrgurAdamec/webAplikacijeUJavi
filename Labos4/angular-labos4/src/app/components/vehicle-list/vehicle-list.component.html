@@ -1,9 +1,12 @@
-<div *ngFor="let vehicle of vehicles">
+<div class="vehicleList" *ngFor="let vehicle of vehicles">
   <div class="border" (click)="setCurrentVehicle(vehicle)">
     <span routerLink="/vehicles"
       >{{ vehicle.registration }}, {{ vehicle.noOfUndercarriage }}</span
     >
+    <div class="buttonDiv">
+      <button (click)="removeVehicle(vehicle)">Remove vehicle</button>
+    </div>
   </div>
 </div>
 
-<!-- <app-vehicle-details [currentVehicle]="currentVehicle"></app-vehicle-details> -->
+<app-new-vehicle-form></app-new-vehicle-form>

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VehicleServiceService {
-  VehicleList: Vehicle[] = [
+  vehicleList: Vehicle[] = [
     {
       maxNoOfPassengers: 4,
       gearbox: 'manual',
@@ -53,8 +53,19 @@ export class VehicleServiceService {
 
   getVehicleList(): Observable<Vehicle[]> {
     return new Observable((observer) => {
-      observer.next(this.VehicleList);
+      observer.next(this.vehicleList);
       observer.complete();
     });
+  }
+
+  addVehicleToList(newVehicle: Vehicle) {
+    this.vehicleList.push(newVehicle);
+  }
+
+  removeVehicleFromList(vehicle: Vehicle) {
+    const index: number = this.vehicleList.indexOf(vehicle);
+    if (index !== -1) {
+      this.vehicleList.splice(index, 1);
+    }
   }
 }

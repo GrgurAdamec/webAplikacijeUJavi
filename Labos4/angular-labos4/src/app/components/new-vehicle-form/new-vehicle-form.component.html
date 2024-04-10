@@ -1,0 +1,70 @@
+<button (click)="changeShowFormValue()">Add a new vehicle!</button>
+
+<form (ngSubmit)="onSubmit()" *ngIf="showFormValue === true">
+  <div>
+    <label for="maxNoOfPassangers">Max number of passangers: </label>
+    <input
+      id="maxNoOfPassangers"
+      type="number"
+      [(ngModel)]="newVehicle.maxNoOfPassengers"
+      name="maxNoOfPassangers"
+    />
+    <br />
+
+    <label for="gearbox">Gearbox: </label>
+    <input
+      id="gearbox"
+      type="text"
+      [(ngModel)]="newVehicle.gearbox"
+      name="gearbox"
+    />
+    <br />
+
+    <label for="airConditioning">Air conditioning: </label>
+    <input
+      id="airConditioning"
+      type="text"
+      [(ngModel)]="newVehicle.airConditioning"
+      name="airConditioning"
+    />
+    <br />
+
+    <label for="noOfDoors">Number of doors: </label>
+    <input
+      id="noOfDoors"
+      type="number"
+      [(ngModel)]="newVehicle.noOfDoors"
+      name="noOfDoors"
+    />
+    <br />
+
+    <label for="fuelType">Fuel type: </label>
+    <input
+      id="fuelType"
+      type="text"
+      [(ngModel)]="newVehicle.fuelType"
+      name="fuelType"
+    />
+    <br />
+
+    <label for="registration">Registration: </label>
+    <input
+      id="registration"
+      type="text"
+      [(ngModel)]="newVehicle.registration"
+      name="registration"
+    />
+    <br />
+
+    <label for="noOfUndercarriage">Number of undercarriage: </label>
+    <input
+      id="noOfUndercarriage"
+      type="number"
+      [(ngModel)]="newVehicle.noOfUndercarriage"
+      name="noOfUndercarriage"
+    />
+    <br />
+
+    <button type="submit">Submit</button>
+  </div>
+</form>

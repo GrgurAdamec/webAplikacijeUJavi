@@ -9,7 +9,7 @@ import { VehicleServiceService } from '../../service/vehicle-service.service';
   styleUrl: './vehicle-details.component.css',
 })
 export class VehicleDetailsComponent {
-  @Input() currentVehicle: Vehicle | null = null;
+  currentVehicle: Vehicle | null = null;
   currentVehicleRegistration: string = '';
   vehicles: Vehicle[] = [];
 

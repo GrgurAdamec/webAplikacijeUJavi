@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Vehicle } from '../../interface/vehicle';
 import { VehicleServiceService } from '../../service/vehicle-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -10,7 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class VehicleListComponent {
   vehicles: Vehicle[] = [];
-  currentVehicleRegistration: string = '';
   currentVehicle: Vehicle | null = null;
 
   constructor(
@@ -25,8 +25,11 @@ export class VehicleListComponent {
   }
 
   setCurrentVehicle(vehicle: Vehicle) {
-    this.currentVehicleRegistration = vehicle.registration;
     this.currentVehicle = vehicle;
     this.router.navigate(['/vehicles', vehicle.registration]);
+  }
+
+  removeVehicle(vehicle: Vehicle) {
+    this.vehicleService.removeVehicleFromList(vehicle);
   }
 }

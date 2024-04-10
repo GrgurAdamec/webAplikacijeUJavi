@@ -3,3 +3,11 @@
   padding: 10px;
   margin: 10px;
 }
+
+.buttonDiv {
+  float: right;
+}
+
+.vehicleList {
+  width: 50%;
+}
