@@ -1,0 +1,7 @@
+<div *ngFor="let vehicle of vehicles">
+  <div class="border" (click)="setCurrentVehicle(vehicle)">
+    <span>{{ vehicle.registration }}, {{ vehicle.noOfUndercarriage }}</span>
+  </div>
+</div>
+
+<app-vehicle-details [currentVehicle]="currentVehicle"></app-vehicle-details>
