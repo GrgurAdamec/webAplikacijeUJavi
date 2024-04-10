@@ -10,7 +10,7 @@ import { VehicleServiceService } from '../../service/vehicle-service.service';
 export class VehicleListComponent {
   vehicles: Vehicle[] = [];
   currentVehicleRegistration: string = '';
-  currentVehicle: Vehicle = {} as Vehicle;
+  currentVehicle: Vehicle | null = null;
 
   constructor(private vehicleService: VehicleServiceService) {}
 

@@ -1,13 +1,7 @@
 <div *ngFor="let vehicle of vehicles">
   <div class="border" (click)="setCurrentVehicle(vehicle)">
-    <p>{{ vehicle.registration }}</p>
-    <p>{{ vehicle.noOfUndercarriage }}</p>
+    <span>{{ vehicle.registration }}, {{ vehicle.noOfUndercarriage }}</span>
   </div>
 </div>
 
-<div *ngIf="currentVehicleRegistration !== ''">
-  <p>
-    Current vehicle registration and number of undercarriage is:
-    {{ currentVehicle.registration }}, {{ currentVehicle.noOfUndercarriage }}
-  </p>
-</div>
+<app-vehicle-details [currentVehicle]="currentVehicle"></app-vehicle-details>

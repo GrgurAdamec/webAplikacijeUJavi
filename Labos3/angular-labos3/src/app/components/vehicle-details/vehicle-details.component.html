@@ -1,1 +1,10 @@
-<p>vehicle-details works!</p>
+<div *ngIf="currentVehicle !== null">
+  <div class="margins">
+    <h1>Detalji o {{ currentVehicle.registration }}:</h1>
+    <p>Klima uređaj: {{ currentVehicle.airConditioning }}</p>
+    <p>Tip goriva: {{ currentVehicle.fuelType }}</p>
+    <p>Mjenjač: {{ currentVehicle.gearbox }}</p>
+    <p>Broj sjedala: {{ currentVehicle.maxNoOfPassengers + 1 }}</p>
+    <p>Broj vrata: {{ currentVehicle.noOfDoors }}</p>
+  </div>
+</div>
