@@ -12,6 +12,7 @@ import { Route, RouterModule, provideRouter } from '@angular/router';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NewVehicleFormComponent } from './components/new-vehicle-form/new-vehicle-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Route[] = [
   { path: '', component: HomePageComponent },
@@ -27,7 +28,13 @@ const routes: Route[] = [
     HomePageComponent,
     NewVehicleFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [provideClientHydration(), provideRouter(routes)],
   bootstrap: [AppComponent],
 })

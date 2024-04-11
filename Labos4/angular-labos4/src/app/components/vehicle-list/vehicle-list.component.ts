@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Vehicle } from '../../interface/vehicle';
-import { VehicleServiceService } from '../../service/vehicle-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { DataService } from '../../service/data.service';
+import { VehicleService } from '../../service/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -14,18 +15,19 @@ export class VehicleListComponent {
   currentVehicle: Vehicle | null = null;
 
   constructor(
-    private vehicleService: VehicleServiceService,
+    private vehicleService: VehicleService,
+    private dataService: DataService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.vehicleService.getVehicleList().subscribe((vehicles: Vehicle[]) => {
+    this.dataService.getVehicles().subscribe((vehicles: Vehicle[]) => {
       this.vehicles = vehicles;
     });
   }
 
   setCurrentVehicle(vehicle: Vehicle) {
-    this.currentVehicle = vehicle;
+    this.vehicleService.setCurrentVehicle(vehicle);
     this.router.navigate(['/vehicles', vehicle.registration]);
   }
 

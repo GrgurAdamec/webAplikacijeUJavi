@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Vehicle } from '../../interface/vehicle';
-import { ActivatedRoute } from '@angular/router';
-import { VehicleServiceService } from '../../service/vehicle-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DataService } from '../../service/data.service';
+import { VehicleService } from '../../service/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -10,28 +11,22 @@ import { VehicleServiceService } from '../../service/vehicle-service.service';
 })
 export class VehicleDetailsComponent {
   currentVehicle: Vehicle | null = null;
-  currentVehicleRegistration: string = '';
-  vehicles: Vehicle[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private vehicleService: VehicleServiceService
+    private router: Router,
+    private vehicleService: VehicleService
   ) {}
 
   ngOnInit() {
-    this.vehicleService.getVehicleList().subscribe((vehicles: Vehicle[]) => {
-      this.vehicles = vehicles;
-    });
-
-    this.route.paramMap.subscribe((params) => {
-      this.currentVehicleRegistration = params.get('id') || '';
-      this.setCurrentVehicle();
-    });
+    this.getCurrentVehicle();
   }
 
-  setCurrentVehicle() {
-    this.currentVehicle = this.vehicles.find(
-      (vehicle) => vehicle.registration === this.currentVehicleRegistration
-    )!;
+  getCurrentVehicle() {
+    this.currentVehicle = this.vehicleService.getCurrentVehicle();
+  }
+
+  back() {
+    this.router.navigate(['/vehicles']);
   }
 }

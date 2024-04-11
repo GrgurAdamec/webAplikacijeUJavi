@@ -1,9 +1,10 @@
 <div class="vehicleList" *ngFor="let vehicle of vehicles">
-  <div class="border" (click)="setCurrentVehicle(vehicle)">
+  <div class="border">
     <span routerLink="/vehicles"
       >{{ vehicle.registration }}, {{ vehicle.noOfUndercarriage }}</span
     >
     <div class="buttonDiv">
+      <button (click)="setCurrentVehicle(vehicle)">Show details</button>
       <button (click)="removeVehicle(vehicle)">Remove vehicle</button>
     </div>
   </div>

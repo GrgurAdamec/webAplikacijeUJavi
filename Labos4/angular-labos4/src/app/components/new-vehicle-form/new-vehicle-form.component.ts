@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Vehicle } from '../../interface/vehicle';
-import { VehicleServiceService } from '../../service/vehicle-service.service';
+import { DataService } from '../../service/data.service';
+import { VehicleService } from '../../service/vehicle.service';
 
 @Component({
   selector: 'app-new-vehicle-form',
@@ -31,5 +32,13 @@ export class NewVehicleFormComponent {
     console.log(this.showFormValue);
   }
 
-  constructor(private vehicleService: VehicleServiceService) {}
+  addVehicle() {
+    console.log(this.newVehicle);
+    this.vehicleService.addVehicleToList(this.newVehicle);
+  }
+
+  constructor(
+    private vehicleService: VehicleService,
+    dataService: DataService
+  ) {}
 }
