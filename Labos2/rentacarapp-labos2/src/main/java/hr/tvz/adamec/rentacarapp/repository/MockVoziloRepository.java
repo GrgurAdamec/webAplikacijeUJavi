@@ -45,8 +45,8 @@ public class MockVoziloRepository implements VoziloRepository {
     }
 
     @Override
-    public void deleteVozilo(Integer id) {
-        vozila = vozila.stream().filter(v -> !Objects.equals(v.getVehicleId(), id)).toList();
+    public void deleteVozilo(String id) {
+        vozila = vozila.stream().filter(v -> !Objects.equals(v.getRegistration(), id)).toList();
     }
 
     @Override

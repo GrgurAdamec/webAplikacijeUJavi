@@ -32,6 +32,8 @@ export class VehicleListComponent {
   }
 
   removeVehicle(vehicle: Vehicle) {
-    this.vehicleService.removeVehicleFromList(vehicle);
+    this.vehicleService.removeVehicleFromList(vehicle).subscribe((x) => {
+      this.vehicles.splice(this.vehicles.indexOf(vehicle), 1);
+    });
   }
 }

@@ -22,7 +22,7 @@ export class DataService {
   addVehicle(vehicle: Vehicle): Observable<Vehicle> {
     return this.http
       .post<Vehicle>(
-        this.vehiclesUrl + 'saveVehicle',
+        this.vehiclesUrl + '/saveVehicle',
         vehicle,
         this.httpOptions
       )

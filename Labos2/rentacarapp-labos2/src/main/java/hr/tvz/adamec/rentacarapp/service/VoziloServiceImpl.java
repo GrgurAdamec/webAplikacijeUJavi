@@ -45,7 +45,7 @@ public class VoziloServiceImpl implements VoziloService {
     }
 
     @Override
-    public void deleteVozilo(Integer id) {
+    public void deleteVozilo(String id) {
         voziloRepository.deleteVozilo(id);
     }
 

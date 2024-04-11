@@ -10,7 +10,7 @@ public interface VoziloService {
     List<VoziloDTO> findAll();
     VoziloDTO findVoziloByCode(Integer code);
     VoziloDTO saveVozilo (VoziloDTO vozilo);
-    void deleteVozilo (Integer id);
+    void deleteVozilo (String id);
 
     VoziloDTO findVoziloDtoByRegistration (String registration);
 

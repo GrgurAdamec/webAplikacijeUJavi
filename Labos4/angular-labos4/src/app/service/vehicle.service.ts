@@ -23,11 +23,11 @@ export class VehicleService {
     return this.dataService.getVehicles();
   }
 
-  addVehicleToList(newVehicle: Vehicle) {
-    this.dataService.addVehicle(newVehicle);
+  addVehicleToList(newVehicle: Vehicle): Observable<Vehicle> {
+    return this.dataService.addVehicle(newVehicle);
   }
 
-  removeVehicleFromList(vehicle: Vehicle) {
-    this.dataService.deleteVehicle(vehicle.registration);
+  removeVehicleFromList(vehicle: Vehicle): Observable<Vehicle> {
+    return this.dataService.deleteVehicle(vehicle.registration);
   }
 }

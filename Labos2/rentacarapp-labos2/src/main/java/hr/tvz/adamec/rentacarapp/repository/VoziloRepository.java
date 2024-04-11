@@ -12,7 +12,7 @@ public interface VoziloRepository {
 
     Vozilo saveVozilo (Vozilo vozilo);
 
-    void deleteVozilo (Integer id);
+    void deleteVozilo (String id);
 
     Optional<Vozilo> findVoziloByRegistration (String registration);
 

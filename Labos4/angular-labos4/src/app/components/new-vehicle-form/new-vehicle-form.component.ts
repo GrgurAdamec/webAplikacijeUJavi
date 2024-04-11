@@ -34,7 +34,7 @@ export class NewVehicleFormComponent {
 
   addVehicle() {
     console.log(this.newVehicle);
-    this.vehicleService.addVehicleToList(this.newVehicle);
+    this.vehicleService.addVehicleToList(this.newVehicle).subscribe((x) => {});
   }
 
   constructor(

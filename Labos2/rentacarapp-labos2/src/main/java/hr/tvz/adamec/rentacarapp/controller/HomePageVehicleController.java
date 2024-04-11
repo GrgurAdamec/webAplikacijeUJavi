@@ -39,7 +39,7 @@ public class HomePageVehicleController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable String id) {
         voziloService.deleteVozilo(id);
     }
 
