@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Vehicle } from '../../interface/vehicle';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { DataService } from '../../service/data.service';
 import { VehicleService } from '../../service/vehicle.service';
+import { response } from 'express';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -12,6 +13,8 @@ import { VehicleService } from '../../service/vehicle.service';
 })
 export class VehicleListComponent {
   vehicles: Vehicle[] = [];
+  vehiclesBehaviorSubject: BehaviorSubject<Vehicle[]> | null = null;
+  subscription: Subscription | null = null;
   currentVehicle: Vehicle | null = null;
 
   constructor(
@@ -21,9 +24,11 @@ export class VehicleListComponent {
   ) {}
 
   ngOnInit() {
-    this.dataService.getVehicles().subscribe((vehicles: Vehicle[]) => {
-      this.vehicles = vehicles;
+    this.vehiclesBehaviorSubject = this.vehicleService.getVehicleList();
+    this.subscription = this.vehiclesBehaviorSubject.subscribe((response) => {
+      this.vehicles = response as Vehicle[];
     });
+    console.log(this.vehicles);
   }
 
   setCurrentVehicle(vehicle: Vehicle) {
@@ -35,5 +40,13 @@ export class VehicleListComponent {
     this.vehicleService.removeVehicleFromList(vehicle).subscribe((x) => {
       this.vehicles.splice(this.vehicles.indexOf(vehicle), 1);
     });
+  }
+
+  expiryDateList() {
+    this.router.navigate(['/expiry-date-list']);
+  }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 }

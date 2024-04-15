@@ -79,10 +79,10 @@ public class VoziloServiceImpl implements VoziloService {
             newInTheOffer = vozilo.getMileage() < 5000;
         }
 
-        return new VoziloDTO(vozilo.getMaxNoOfPassengers(), vozilo.getGearbox(), vozilo.getAirConditioning(), vozilo.getNoOfDoors(), vozilo.getFuelType(), newInTheOffer, vozilo.getRegistration(), vozilo.getNoOfUndercarriage());
+        return new VoziloDTO(vozilo.getMaxNoOfPassengers(), vozilo.getGearbox(), vozilo.getAirConditioning(), vozilo.getNoOfDoors(), vozilo.getFuelType(), newInTheOffer, vozilo.getRegistration(), vozilo.getNoOfUndercarriage(), vozilo.getRegExpiry());
     }
 
     private Vozilo convertVoziloDtoToVozilo (VoziloDTO vozilo) {
-        return new Vozilo(vozilo.getMaxNoOfPassengers(), vozilo.getGearbox(), vozilo.getAirConditioning(), vozilo.getNoOfDoors(), vozilo.getFuelType(), vozilo.getRegistration(), vozilo.getNoOfUndercarriage());
+        return new Vozilo(vozilo.getMaxNoOfPassengers(), vozilo.getGearbox(), vozilo.getAirConditioning(), vozilo.getNoOfDoors(), vozilo.getFuelType(), vozilo.getRegistration(), vozilo.getNoOfUndercarriage(), vozilo.getRegExpiry());
     }
 }

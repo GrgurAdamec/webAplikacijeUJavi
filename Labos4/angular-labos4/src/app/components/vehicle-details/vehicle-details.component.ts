@@ -11,6 +11,19 @@ import { VehicleService } from '../../service/vehicle.service';
 })
 export class VehicleDetailsComponent {
   currentVehicle: Vehicle | null = null;
+  editActive = false;
+
+  newVehicle: Vehicle = {
+    maxNoOfPassengers: 0,
+    gearbox: '',
+    airConditioning: '',
+    noOfDoors: 0,
+    fuelType: '',
+    newInTheOffer: true,
+    registration: '',
+    noOfUndercarriage: 0,
+    regExpiry: '',
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -20,6 +33,10 @@ export class VehicleDetailsComponent {
 
   ngOnInit() {
     this.getCurrentVehicle();
+
+    if (this.currentVehicle !== null) {
+      this.newVehicle = this.currentVehicle;
+    }
   }
 
   getCurrentVehicle() {
@@ -28,5 +45,15 @@ export class VehicleDetailsComponent {
 
   back() {
     this.router.navigate(['/vehicles']);
+  }
+
+  editActiveChange() {
+    this.editActive = !this.editActive;
+  }
+
+  onSubmit() {
+    this.vehicleService.changeVehicle(this.newVehicle);
+
+    this.editActive = false;
   }
 }

@@ -19,6 +19,7 @@ export class NewVehicleFormComponent {
     newInTheOffer: true,
     registration: '',
     noOfUndercarriage: 0,
+    regExpiry: '',
   };
 
   onSubmit() {
@@ -33,12 +34,8 @@ export class NewVehicleFormComponent {
   }
 
   addVehicle() {
-    console.log(this.newVehicle);
-    this.vehicleService.addVehicleToList(this.newVehicle).subscribe((x) => {});
+    this.vehicleService.addVehicleToList(this.newVehicle);
   }
 
-  constructor(
-    private vehicleService: VehicleService,
-    dataService: DataService
-  ) {}
+  constructor(private vehicleService: VehicleService) {}
 }

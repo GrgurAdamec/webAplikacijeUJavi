@@ -10,10 +10,14 @@ export class DataService {
   private vehiclesUrl = 'http://localhost:8080/vehicles';
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      charset: 'UTF-8',
+    }),
   };
 
-  getVehicles(): Observable<Vehicle[]> {
+  getVehicles() {
+    console.log('getVehicles');
     return this.http
       .get<Vehicle[]>(this.vehiclesUrl + '/all')
       .pipe(tap((_) => console.log('fetched vehicles')));
@@ -43,6 +47,22 @@ export class DataService {
       .delete<Vehicle>(url, this.httpOptions)
       .pipe(
         tap((_) => console.log(`deleted vehicle registration=${registration}`))
+      );
+  }
+
+  changeVehicle(vehicle: Vehicle): Observable<Vehicle> {
+    return this.http
+      .post<Vehicle>(
+        this.vehiclesUrl + '/saveVehicle',
+        vehicle,
+        this.httpOptions
+      )
+      .pipe(
+        tap((newVehicle: Vehicle) =>
+          console.log(
+            `changed vehicle w/ registration=${newVehicle.registration}`
+          )
+        )
       );
   }
 

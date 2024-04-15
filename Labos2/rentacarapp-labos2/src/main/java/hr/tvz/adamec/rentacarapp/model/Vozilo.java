@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -23,8 +25,9 @@ public class Vozilo {
     private Integer mileage;
     private String registration;
     private Integer noOfUndercarriage;
+    private LocalDate regExpiry;
 
-    public Vozilo(Integer maxNoOfPassengers, String gearbox, String airConditioning, Integer noOfDoors, String fuelType, String registration, Integer noOfUndercarriage) {
+    public Vozilo(Integer maxNoOfPassengers, String gearbox, String airConditioning, Integer noOfDoors, String fuelType, String registration, Integer noOfUndercarriage, LocalDate regExpiry) {
         this.maxNoOfPassengers = maxNoOfPassengers;
         this.gearbox = gearbox;
         this.airConditioning = airConditioning;
@@ -32,5 +35,6 @@ public class Vozilo {
         this.fuelType = fuelType;
         this.registration = registration;
         this.noOfUndercarriage = noOfUndercarriage;
+        this.regExpiry = regExpiry;
     }
 }

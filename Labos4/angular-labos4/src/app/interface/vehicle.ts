@@ -7,4 +7,5 @@ export interface Vehicle {
   newInTheOffer: boolean;
   registration: string;
   noOfUndercarriage: number;
+  regExpiry: string;
 }

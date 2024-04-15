@@ -13,11 +13,14 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { NewVehicleFormComponent } from './components/new-vehicle-form/new-vehicle-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { VehicleService } from './service/vehicle.service';
+import { ExpiryDateListComponent } from './components/expiry-date-list/expiry-date-list.component';
 
 const routes: Route[] = [
   { path: '', component: HomePageComponent },
   { path: 'vehicles/:id', component: VehicleDetailsComponent },
   { path: 'vehicles', component: VehicleListComponent },
+  { path: 'expiry-date-list', component: ExpiryDateListComponent },
 ];
 
 @NgModule({
@@ -27,6 +30,7 @@ const routes: Route[] = [
     VehicleDetailsComponent,
     HomePageComponent,
     NewVehicleFormComponent,
+    ExpiryDateListComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,4 +42,8 @@ const routes: Route[] = [
   providers: [provideClientHydration(), provideRouter(routes)],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private vehicleService: VehicleService) {
+    this.vehicleService.init();
+  }
+}
